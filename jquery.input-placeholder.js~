@@ -53,7 +53,7 @@
 				
 				var innerContainer = jQuery('<div>');
 				innerContainer.addClass(createClassName('inner'));
-				if (jQuery.browser.msie){
+				if ($.browser.msie){
 					innerContainer.width(field.width());
 				}				
 

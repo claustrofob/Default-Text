@@ -31,10 +31,6 @@ $(document).ready(function(){
 		$(this).animate({
 			'width': '+=100'
 		}, 1000);
-	}).blur(function(){
-		$(this).animate({
-			'width': '-=100'
-		}, 1000);
 	});
 });
 </script>

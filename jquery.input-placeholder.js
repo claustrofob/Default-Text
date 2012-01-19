@@ -2,9 +2,6 @@
 
     jQuery.fn.inputDefault = function(options) {
 
-    	/**
-		 * Default values, currently its only a string to display
-		 */
 		var defaults = {
 			/**
 			 * default text on input
@@ -13,15 +10,18 @@
     		/**
     		 * if default text text is not specified in defaultText option, it is found in the defined input attribute
     		 */
-    		defaultTextAttr: "placeholder"
+    		defaultTextAttr: "placeholder",
+    		
+    		/**
+    		 * prefix for all classNames
+    		 */
+    		classPrefix: "jquery-input-default-"
     	};
 
 		defaults = jQuery.extend(defaults, options);		
 		
 		jQuery(this).each(function() {
-	    	/**
-	    	 * The current textfield or textarea
-	    	 */
+
 			var field = jQuery(this);
 			var wrapper = null;
 			
@@ -44,14 +44,21 @@
 	
 				field.removeAttr('placeholder');
 	
-				wrapper = jQuery('<div class="jquery-input-default-placeholder-wrapper jquery-input-default-focused">');
-				var container = jQuery('<div class="jquery-input-default-border">');
-				container.addClass(field.is('textarea') ? 'jquery-input-default-textarea' : 'jquery-input-default-input');
-				var innerContainer = jQuery('<div class="jquery-input-default-inner">');
+				wrapper = jQuery('<div>');
+				wrapper.addClass(createClassName('wrapper'));
+				
+				var container = jQuery('<div>');
+				container.addClass(createClassName('border'))
+						.addClass(field.is('textarea') ? createClassName('textarea') : createClassName('input'));
+				
+				var innerContainer = jQuery('<div>');
+				innerContainer.addClass(createClassName('inner'));
+				
 				container.append(innerContainer);
 				wrapper.append(container);
 				
-				var label = jQuery('<div class="jquery-input-default-placeholder">');
+				var label = jQuery('<div>');
+				label.addClass(createClassName('placeholder'));
 				label.html(defaultText);
 				
 				field.before(wrapper);
@@ -65,23 +72,26 @@
 	
 			function eventHandler() {
 				if (field.val() === ''){
-					wrapper.removeClass('jquery-input-default-filled');
+					wrapper.removeClass(createClassName('filled'));
 				} else {
-					wrapper.addClass('jquery-input-default-filled');	
+					wrapper.addClass(createClassName('filled'));	
 				}	
 	
 				if (field.get(0) === document.activeElement){
-					wrapper.removeClass('jquery-input-default-blured').addClass('jquery-input-default-focused');
+					wrapper.removeClass(createClassName('blured')).addClass(createClassName('focused'));
 				} else {
-					wrapper.removeClass('jquery-input-default-focused').addClass('jquery-input-default-blured');
+					wrapper.removeClass(createClassName('focused')).addClass(createClassName('blured'));
 				}			
 				
 				return true;
 			}
 			
+			function createClassName($className){
+				return defaults.classPrefix + $className;
+			}
+			
 		});	
 
-		// return the dom node
 		return this;
 	}
 })(jQuery);

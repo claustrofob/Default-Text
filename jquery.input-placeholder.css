@@ -23,44 +23,28 @@
 
 .jquery-input-default-wrapper input,
 .jquery-input-default-wrapper textarea{
-	opacity:0;
-	filter: alpha(opacity = 0);
+	background: url('blank.gif');
 	position: relative;
 	z-index:1;
-	border: 0;
-	outline: none;
 	margin: 0;
 }
 
 .jquery-input-default-wrapper .jquery-input-default-placeholder{
 	z-index:0;
 	position: absolute;
-	overflow: hidden;
 }
 
-.jquery-input-default-wrapper.jquery-input-default-focused input,
-.jquery-input-default-wrapper.jquery-input-default-focused textarea{
+.jquery-input-default-wrapper.jquery-input-default-focused .jquery-input-default-placeholder{
 	opacity:0.5;
 	filter: alpha(opacity = 50);
 }
 
-.jquery-input-default-wrapper.jquery-input-default-filled input,
-.jquery-input-default-wrapper.jquery-input-default-filled textarea{
-	opacity:1;
-	filter: alpha(opacity = 100);
-}
-
-.jquery-input-default--wrapper.jquery-input-default-filled .jquery-input-default-placeholder{
+.jquery-input-default-wrapper.jquery-input-default-filled .jquery-input-default-placeholder{
 	display: none;
 }
 
 .jquery-input-default-wrapper .jquery-input-default-border{
 	float: left; 
-	margin: 0;
-	padding: 0;
-}
-
-.jquery-input-default-wrapper .jquery-input-default-inner{
 	overflow: hidden; 
 	position: relative;
 }

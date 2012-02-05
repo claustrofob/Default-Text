@@ -23,6 +23,7 @@
 		jQuery(this).each(function() {
 
 			var field = jQuery(this);
+			var label = null;
 			var wrapper = null;
 			
 			init();
@@ -49,24 +50,17 @@
 				
 				var container = jQuery('<div>');
 				container.addClass(createClassName('border'))
-						.addClass(field.is('textarea') ? createClassName('textarea') : createClassName('input'));
-				
-				var innerContainer = jQuery('<div>');
-				innerContainer.addClass(createClassName('inner'));
-				if (jQuery.browser.msie){
-					innerContainer.width(field.width());
-				}				
+						.addClass(field.is('textarea') ? createClassName('textarea') : createClassName('input'));			
 
-				container.append(innerContainer);
 				wrapper.append(container);
 				
-				var label = jQuery('<div>');
+				label = jQuery('<div>');
 				label.addClass(createClassName('placeholder'));
 				label.html(defaultText);
 				
 				field.before(wrapper);
-				innerContainer.append(label).append(field);
-	
+				container.append(label).append(field);
+				
 				field.bind('focus.inputDefault blur.inputDefault input.inputDefault propertychange.inputDefault', eventHandler)
 					.trigger('input.inputDefault');
 				
@@ -85,6 +79,10 @@
 				} else {
 					wrapper.removeClass(createClassName('focused')).addClass(createClassName('blured'));
 				}			
+				
+				//for ie
+				label.width(field.width());
+				label.css('width', 'auto');				
 				
 				return true;
 			}

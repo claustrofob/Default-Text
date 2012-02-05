@@ -5,20 +5,17 @@
 <title>Default Text demo</title>
 <link type="text/css" rel="stylesheet" href="jquery.input-placeholder.css" />
 <style>
-.jquery-input-default-inner{
-	margin: 3px;
+.jquery-input-default-placeholder{
+	margin: 2px;
 }
 
 .jquery-input-default-placeholder,
 input,
 textarea{
+	padding: 2px;
 	font-size: 12px;
 	font-family: 'Georgia';
 	line-height: 15px;
-}
-
-.jquery-input-default-wrapper .jquery-input-default-border{
-	border: 1px solid #999;
 }
 </style>
 <script type="text/javascript" src="jquery.js"></script>
@@ -27,7 +24,7 @@ textarea{
 $(document).ready(function(){
 	$(':input').inputDefault();
 
-	$('#test2').focus(function(){
+	$('#test3').focus(function(){
 		$(this).animate({
 			'width': '+=100'
 		}, 1000);
@@ -44,6 +41,6 @@ $(document).ready(function(){
 <br>
 <input type="text" name="test2" id="test2" placeholder="шо за нах фу бля епт ещё пара слов" />
 <br>
-<textarea name="test3" placeholder="очень длинный текст для демострации работы плагина"></textarea>
+<textarea id="test3" name="test3" placeholder="очень длинный текст для демострации работы плагина"></textarea>
 </body>
 </html>

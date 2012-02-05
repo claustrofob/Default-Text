@@ -1,24 +1,12 @@
-/* float clearing for IE6 */
-* html .jquery-input-default-wrapper{
-  height: 1%;
-  overflow: visible;
+.jquery-input-default-wrapper{
+	display: inline-block;
+	overflow: hidden; 
+	position: relative;
 }
 
-/* float clearing for IE7 */
 *+html .jquery-input-default-wrapper{
-  min-height: 1%;
-}
-
-.jquery-input-default-wrapper:after {
-	clear: both;
-	content: ".";
-	display: block;
-	height: 0;
-	visibility: hidden;
-	font-size: 0;
-	margin: 0;
-	padding: 0;
-	border: 0;	
+	display: inline;
+	zoom: 1;
 }
 
 .jquery-input-default-wrapper input,
@@ -43,16 +31,10 @@
 	display: none;
 }
 
-.jquery-input-default-wrapper .jquery-input-default-border{
-	float: left; 
-	overflow: hidden; 
-	position: relative;
-}
-
-.jquery-input-default-wrapper .jquery-input-default-input{
+.jquery-input-default-wrapper.jquery-input-default-input{
 	white-space: nowrap;
 }
 
-.jquery-input-default-wrapper .jquery-input-default-textarea{
+.jquery-input-default-wrapper.jquery-input-default-textarea{
 	white-space: normal;
 }

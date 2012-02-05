@@ -46,20 +46,15 @@
 				field.removeAttr('placeholder');
 	
 				wrapper = jQuery('<div>');
-				wrapper.addClass(createClassName('wrapper'));
-				
-				var container = jQuery('<div>');
-				container.addClass(createClassName('border'))
-						.addClass(field.is('textarea') ? createClassName('textarea') : createClassName('input'));			
-
-				wrapper.append(container);
+				wrapper.addClass(createClassName('wrapper'))
+						.addClass(field.is('textarea') ? createClassName('textarea') : createClassName('input'));	
 				
 				label = jQuery('<div>');
 				label.addClass(createClassName('placeholder'));
 				label.html(defaultText);
 				
 				field.before(wrapper);
-				container.append(label).append(field);
+				wrapper.append(label).append(field);
 				
 				field.bind('focus.inputDefault blur.inputDefault input.inputDefault propertychange.inputDefault', eventHandler)
 					.trigger('input.inputDefault');
@@ -80,7 +75,7 @@
 					wrapper.removeClass(createClassName('focused')).addClass(createClassName('blured'));
 				}			
 				
-				//for ie
+				//for ie7
 				label.width(field.width());
 				label.css('width', 'auto');				
 				

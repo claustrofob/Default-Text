@@ -25,6 +25,9 @@
             var field = jQuery(this),
                 defaultText = '';
 
+            if (field.data('initialized.inputDefault')) return;
+            field.data('initialized.inputDefault', true);
+
             if (defaults.defaultText === ''){
                 var placeholder = field.attr(defaults.defaultTextAttr);
                 if (placeholder !== ''){
@@ -40,17 +43,45 @@
 
             var wrapper = jQuery('<div>');
             wrapper.addClass(createClassName('wrapper'))
-                   .addClass(field.is('textarea') ? createClassName('textarea') : createClassName('input'));
+                   .addClass(field.is('textarea') ? createClassName('textarea') : createClassName('input'))
+                   .css({
+                        'margin-top': field.css('margin-top'),
+                        'margin-right': field.css('margin-right'),
+                        'margin-bottom': field.css('margin-bottom'),
+                        'margin-left': field.css('margin-left'),
+                        'background-color': field.css('background-color'),
+                        'background-repeat': field.css('background-repeat'),
+                        'background-image': field.css('background-image'),
+                        'background-position': field.css('background-position'),
+                        'background-attachment': field.css('background-attachment'),
+                        'border-top-left-radius': field.css('border-top-left-radius'),
+                        'border-top-right-radius': field.css('border-top-right-radius'),
+                        'border-bottom-left-radius': field.css('border-bottom-left-radius'),
+                        'border-bottom-right-radius': field.css('border-bottom-right-radius')
+                   });
 
             var label = jQuery('<div>');
             label.addClass(createClassName('placeholder'))
-                 .html(defaultText);
+                 .html(defaultText)
+                 .css({
+                    'padding-top': parseInt(field.css('padding-top')) + parseInt(field.css('border-top-width')) + 'px',
+                    'padding-right': parseInt(field.css('padding-right')) + parseInt(field.css('border-right-width')) + 'px',
+                    'padding-bottom': parseInt(field.css('padding-bottom')) + parseInt(field.css('border-bottom-width')) + 'px',
+                    'padding-left': parseInt(field.css('padding-left')) + parseInt(field.css('border-left-width')) + 'px',
+                    'line-height': field.css('line-height'),
+                    'font-size': field.css('font-size'),
+                    'font-family': field.css('font-family'),
+                    'font-style': field.css('font-style'),
+                    'font-weight': field.css('font-weight'),
+                    'color': field.css('color')
+                 });
 
             field.before(wrapper);
             wrapper.append(label).append(field);
 
             field.data('wrapper.inputDefault', wrapper);
             field.data('label.inputDefault', label);
+            field.css('margin', '0');
 
             field.on('focus.inputDefault blur.inputDefault', function(){
                 focusHandler($(this));

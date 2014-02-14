@@ -4,20 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Default Text demo</title>
 <link type="text/css" rel="stylesheet" href="jquery.input-placeholder.css" />
-<style>
-.jquery-input-default-placeholder{
-	margin: 2px;
-}
-
-.jquery-input-default-placeholder,
-input,
-textarea{
-	padding: 5px;
-	font-size: 12px;
-	font-family: 'Georgia';
-	line-height: 15px;
-}
-</style>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="jquery.input-placeholder.js"></script>
 <script type="text/javascript">
@@ -27,22 +13,40 @@ $(document).ready(function(){
 	$('#test3').focus(function(){
 		$(this).animate({
 			'width': '+=100'
-		}, 1000);
+		}, 700);
 	}).blur(function(){
 		$(this).animate({
 			'width': '-=100'
-		}, 1000);
+		}, 700);
 	});
 });
 </script>
+<style type="text/css">
+input.styled{
+	font-size: 18px;
+	font-weight: bold;
+	background: tomato;
+	padding: 5px;
+	border-radius: 14px;
+	color: purple;
+	border: 2px solid green;
+}
+input.styled:focus{
+	border: 2px solid red;
+}
+</style>
 </head>
 <body>
-<input type="text" name="test" placeholder="text" />
+<input type="text" name="test" placeholder="placeholder" />
 <br>
 <br>
-<input type="text" name="test2" id="test2" placeholder="шо за нах фу бля епт ещё пара слов" />
+<input type="text" name="test2" id="test2" placeholder="very long placeholder that doesn't fit the input" />
 <br>
 <br>
-<textarea id="test3" name="test3" placeholder="очень длинный текст для демострации работы плагина"></textarea>
+<textarea id="test3" name="test3" placeholder="very long placeholder in a flexible field"></textarea>
+<br>
+<br>
+<input type="text" name="test4" class="styled" placeholder="placeholder for styled input" />
+<br>
 </body>
 </html>
